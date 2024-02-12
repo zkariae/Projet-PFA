@@ -1,0 +1,16 @@
+Imeas=xlsread('Normal_OP.xlsx','E2:E2501'); 
+Vmeas=xlsread('Normal_OP.xlsx','D2:D2501');
+Pmeas=Imeas.*Vmeas;
+MPPmeas=max(Pmeas); 
+Psim=Isim.*Vsim;
+MPPsim=max(Psim);
+G=800;
+T=20;
+S=18;
+DLP=abs(MPPsim-MPPmeas);
+th=2*100*(0.02+0.059);
+if (DLP>th)
+    disp('Start fault isolation technique');
+else
+    disp('Normal operation');
+end
